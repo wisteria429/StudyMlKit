@@ -1,9 +1,9 @@
 package jp.study.fuji.studymlkit
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -12,12 +12,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val options = FirebaseVisionFaceDetectorOptions.Builder()
-                .setModeType(FirebaseVisionFaceDetectorOptions.ACCURATE_MODE)
-                .setLandmarkType(FirebaseVisionFaceDetectorOptions.ALL_LANDMARKS)
-                .setClassificationType(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
-                .setMinFaceSize(0.15f)
-                .setTrackingEnabled(true)
-                .build()
+        button_camera.setOnClickListener {
+            val intent = Intent(this, CameraActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
